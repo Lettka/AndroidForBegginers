@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blue_background"
     android:orientation="vertical">
 
     <Space
@@ -18,8 +19,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:gravity="end"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="@dimen/button_text" />
 
         <Space
@@ -38,9 +40,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:gravity="end"
             android:hint="0"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="@dimen/button_text" />
 
         <Button
@@ -62,7 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_1"
             android:textSize="@dimen/button_text" />
 
@@ -71,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_2"
             android:textSize="@dimen/button_text" />
 
@@ -80,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_3"
             android:textSize="@dimen/button_text" />
 
@@ -103,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_4"
             android:textSize="@dimen/button_text" />
 
@@ -112,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_5"
             android:textSize="@dimen/button_text" />
 
@@ -121,7 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_6"
             android:textSize="@dimen/button_text" />
 
@@ -144,7 +147,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_7"
             android:textSize="@dimen/button_text" />
 
@@ -153,7 +156,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_8"
             android:textSize="@dimen/button_text" />
 
@@ -162,7 +165,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_9"
             android:textSize="@dimen/button_text" />
 
@@ -186,7 +189,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:text="@string/_0"
             android:textSize="@dimen/button_text" />
 
@@ -195,7 +198,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/_equal"
             android:textSize="@dimen/button_text" />
 
@@ -209,8 +212,4 @@
             android:textSize="@dimen/button_text" />
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
 </LinearLayout>
