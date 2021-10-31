@@ -16,4 +16,7 @@
     <string name="_mul">*</string>
     <string name="_div">/</string>
     <string name="_clean">C</string>
+    <string name="hint_0">0</string>
+    <string name="MyThemeBlueberry">Blueberry</string>
+    <string name="MyThemePear">Pear</string>
 </resources>
