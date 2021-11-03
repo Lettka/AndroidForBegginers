@@ -3,13 +3,21 @@ package com.example.androidforbegginers;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String CALCULATOR = "CALCULATOR";
+    public static final String PREFERENCES_NAME = "preferences";
+    public static final int MyThemePear = 0;
+    public static final int MyThemeBlueberry = 1;
+    private static final String THEME_NAME = "theme";
+
+
     private TextView textView;
     private TextView textViewResult;
     private Calculator calculator;
@@ -17,7 +25,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(loadAppTheme());
         setContentView(R.layout.activity_main);
+
+        int currentTheme = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE)
+                .getInt(THEME_NAME, MyThemeBlueberry);
+        if (currentTheme == MyThemeBlueberry) {
+            ((RadioButton) findViewById(R.id.radioButtonBlueberry)).setChecked(true);
+        } else {
+            ((RadioButton) findViewById(R.id.radioButtonPear)).setChecked(true);
+        }
+
+        findViewById(R.id.radioButtonBlueberry).setOnClickListener(v -> {
+            saveAppTheme(MyThemeBlueberry);
+            recreate();
+        });
+        findViewById(R.id.radioButtonPear).setOnClickListener(v -> {
+            saveAppTheme(MyThemePear);
+            recreate();
+        });
+
         textView = findViewById(R.id.textView);
         textViewResult = findViewById(R.id.textViewResult);
         if (calculator == null) {
@@ -106,13 +133,37 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private int codeStyleToStyleId(int codeStyle) {
+        switch (codeStyle) {
+            case MyThemePear:
+                return R.style.MyThemePear;
+            case MyThemeBlueberry:
+            default:
+                return R.style.MyThemeBlueberry;
+        }
+    }
+
+    private void saveAppTheme(int code) {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
+        sharedPreferences.edit()
+                .putInt(THEME_NAME, code)
+                .apply();
+    }
+
+    private int loadAppTheme() {
+        int codeTheme = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE)
+                .getInt(THEME_NAME, MyThemeBlueberry);
+        return codeStyleToStyleId(codeTheme);
+    }
+
     private void makeOperation(String operation) {
         calculator.setViewCalculate(textView.getText() + operation);
         calculator.setResult(Double.parseDouble(calculator.getNumber()));
         calculator.setNumber("");
         textView.setText(calculator.getViewCalculate());
     }
-    private void updateView(String number){
+
+    private void updateView(String number) {
         calculator.setNumber(calculator.getNumber() + number);
         calculator.setViewCalculate(calculator.getViewCalculate() + number);
         textView.setText(calculator.getViewCalculate());
@@ -122,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         calculator = (Calculator) savedInstanceState.getParcelable(CALCULATOR);
-        if (calculator == null){
+        if (calculator == null) {
             calculator = new Calculator();
         }
         textViewResult.setText(calculator.getViewResult());
