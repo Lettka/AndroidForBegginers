@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout-land/activity_main_linear_layout.xml" value="0.17372134038800705" />
+        <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout-land/activity_main_linear_layout.xml" value="0.1" />
         <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout/activity_main2.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout/activity_main_linear_layout.xml" value="0.20520833333333333" />
+        <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout/activity_main_linear_layout.xml" value="0.15" />
+        <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout/activity_main_settings.xml" value="0.2" />
         <entry key="..\:/AndroidProdjects/AndroidForBegginers/app/src/main/res/layout/linear_layout.xml" value="0.20520833333333333" />
       </map>
     </option>
