@@ -19,4 +19,7 @@
     <string name="hint_0">0</string>
     <string name="MyThemeBlueberry">Blueberry</string>
     <string name="MyThemePear">Pear</string>
+    <string name="_theme">theme</string>
+    <string name="_chooseTheme">Choose a theme</string>
+    <string name="_saveGoBack">save and go back</string>
 </resources>

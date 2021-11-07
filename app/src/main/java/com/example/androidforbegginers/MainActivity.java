@@ -1,8 +1,10 @@
 package com.example.androidforbegginers;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int MyThemePear = 0;
     public static final int MyThemeBlueberry = 1;
     private static final String THEME_NAME = "theme";
+    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
 
 
     private TextView textView;
@@ -28,21 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setTheme(loadAppTheme());
         setContentView(R.layout.activity_main);
 
-        int currentTheme = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE)
-                .getInt(THEME_NAME, MyThemeBlueberry);
-        if (currentTheme == MyThemeBlueberry) {
-            ((RadioButton) findViewById(R.id.radioButtonBlueberry)).setChecked(true);
-        } else {
-            ((RadioButton) findViewById(R.id.radioButtonPear)).setChecked(true);
-        }
-
-        findViewById(R.id.radioButtonBlueberry).setOnClickListener(v -> {
-            saveAppTheme(MyThemeBlueberry);
-            recreate();
-        });
-        findViewById(R.id.radioButtonPear).setOnClickListener(v -> {
-            saveAppTheme(MyThemePear);
-            recreate();
+        findViewById(R.id.themeButton).setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivitySettings.class);
+            startActivityForResult(intent, REQUEST_CODE_SETTING_ACTIVITY);
         });
 
         textView = findViewById(R.id.textView);
@@ -133,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE_SETTING_ACTIVITY && resultCode == RESULT_OK && data != null) {
+            int themeCode = data.getIntExtra(THEME_NAME, MyThemeBlueberry);
+            codeStyleToStyleId(themeCode);
+            recreate();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     private int codeStyleToStyleId(int codeStyle) {
         switch (codeStyle) {
             case MyThemePear:
@@ -141,13 +142,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return R.style.MyThemeBlueberry;
         }
-    }
-
-    private void saveAppTheme(int code) {
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
-        sharedPreferences.edit()
-                .putInt(THEME_NAME, code)
-                .apply();
     }
 
     private int loadAppTheme() {
